@@ -1,4 +1,4 @@
-[![DOI](https://zenodo.org/badge/265119113.svg)](https://zenodo.org/badge/latestdoi/265119113)
+[![DOI]()
 
 # Scripts for "Drivers of Water Scarcity in Latin America and the Caribbean" (Birnbaum et al. (2022), in prep)
 Insert text here describing the paper
