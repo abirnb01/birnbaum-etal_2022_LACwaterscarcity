@@ -28,23 +28,23 @@ metrics %>% filter(basin==bs & year==yr) -> df_filt
 #make sure that the parameters are categorical variables!
 df_filt$soc=as.factor(df_filt$soc)
 df_filt$ag=as.factor(df_filt$ag)
-df_filt$ssp=as.factor(df_filt$ssp)
+df_filt$osf=as.factor(df_filt$osf)
 df_filt$gw=as.factor(df_filt$gw)
 df_filt$res=as.factor(df_filt$res)
 df_filt$esm=as.factor(df_filt$esm)
 df_filt$tax=as.factor(df_filt$tax)
 
 #remove duplicates from dataset
-df_filt %>% distinct(soc,ag,gw,res,esm,tax,wta, .keep_all= TRUE) -> no_dups
+df_filt %>% distinct(soc,ag,gw,res,esm,tax,pws, .keep_all= TRUE) -> no_dups
 
-#create wta_binary which is threshold for most severe scenarios (physical water scarcity > 0.4)
-no_dups$wta_binary <- no_dups$wta > 0.4
+#create pws_binary which is threshold for most severe scenarios (physical water scarcity > 0.4)
+no_dups$pws_binary <- no_dups$pws > 0.4
 
 #filter to just parameter assumptions and binary threshold (wta_binary)
-df_class <- subset(no_dups, select = c("soc","ag","ssp","tax","gw","esm","res","wta_binary"))
+df_class <- subset(no_dups, select = c("soc","ag","osf","tax","gw","esm","res","pws_binary"))
 
 #run classification with max depth = 4
-fit_class <- rpart(wta_binary ~ .,
+fit_class <- rpart(pws_binary ~ .,
                    method="class", data=df_class,control=c(maxdepth=4),cp=.000001)
 
 #plot classification tree

@@ -28,20 +28,20 @@ metrics %>% filter(basin==bs & year==yr) -> df_filt
 #make sure that the parameters are categorical variables!
 df_filt$soc=as.factor(df_filt$soc)
 df_filt$ag=as.factor(df_filt$ag)
-df_filt$ssp=as.factor(df_filt$ssp)
+df_filt$osf=as.factor(df_filt$osf)
 df_filt$gw=as.factor(df_filt$gw)
 df_filt$res=as.factor(df_filt$res)
 df_filt$esm=as.factor(df_filt$esm)
 df_filt$tax=as.factor(df_filt$tax)
 
 #remove duplicates from dataset
-df_filt %>% distinct(soc,ag,gw,res,esm,tax,wta, .keep_all= TRUE) -> no_dups
+df_filt %>% distinct(soc,ag,gw,res,esm,tax,pws, .keep_all= TRUE) -> no_dups
 
 #set binary threshold caled profit_binary of profit_pchange -5%
 no_dups$profit_binary <- no_dups$profit_pchange <= -5 # if it's in the worst fifth percentile
 
 #filter just to columns of interest (7 parameters plus binary threshold)
-df_class <- subset(no_dups, select = c("soc","ag","ssp","tax","gw","esm","res","profit_binary"))
+df_class <- subset(no_dups, select = c("soc","ag","osf","tax","gw","esm","res","profit_binary"))
 
 #run classification with max depth = 4
 fit_class <- rpart(profit_binary ~ .,

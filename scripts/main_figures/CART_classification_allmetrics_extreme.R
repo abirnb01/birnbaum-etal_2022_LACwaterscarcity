@@ -29,22 +29,22 @@ metrics %>% filter(basin==bs & year==yr) -> df_filt
 #make sure that the parameters are categorical variables!
 df_filt$soc=as.factor(df_filt$soc)
 df_filt$ag=as.factor(df_filt$ag)
-df_filt$ssp=as.factor(df_filt$ssp)
+df_filt$osf=as.factor(df_filt$osf)
 df_filt$gw=as.factor(df_filt$gw)
 df_filt$res=as.factor(df_filt$res)
 df_filt$esm=as.factor(df_filt$esm)
 df_filt$tax=as.factor(df_filt$tax)
 
 #remove duplicates from dataset
-df_filt %>% distinct(soc,ag,gw,res,esm,tax,wta, .keep_all= TRUE) -> no_dups
+df_filt %>% distinct(soc,ag,gw,res,esm,tax,pws, .keep_all= TRUE) -> no_dups
 
 #create binary all_true to specify if all scarcity metrics are extreme or not
-no_dups$all_true <- (no_dups$profit_pchange <= -5) & (no_dups$wta > 0.4) & (no_dups$price_scenario >= 1.1*no_dups$weighted_price_scenario)
+no_dups$all_true <- (no_dups$profit_pchange <= -5) & (no_dups$pws > 0.4) & (no_dups$price_scenario >= 1.1*no_dups$weighted_price_scenario)
 
 sum(no_dups$all_true) #how many scenarios are extreme for all three metrics for this basin?
 
 #get just the columns we need for CART (the seven parameters and the binary all_true column)
-df_class <- subset(no_dups, select = c("soc","ag","ssp","tax","gw","esm","res","all_true"))
+df_class <- subset(no_dups, select = c("soc","ag","osf","tax","gw","esm","res","all_true"))
 
 #run classification with max depth = 4
 fit_class <- rpart(all_true ~ .,

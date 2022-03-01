@@ -37,18 +37,18 @@ for (bs in basin_list) {
   #make sure that the parameters are categorical variables!
   df_filt$soc=as.factor(df_filt$soc)
   df_filt$ag=as.factor(df_filt$ag)
-  df_filt$ssp=as.factor(df_filt$ssp)
+  df_filt$osf=as.factor(df_filt$osf)
   df_filt$gw=as.factor(df_filt$gw)
   df_filt$res=as.factor(df_filt$res)
   df_filt$esm=as.factor(df_filt$esm)
   df_filt$tax=as.factor(df_filt$tax)
   
   #remove duplicates from dataset
-  df_filt %>% distinct(soc,ag,gw,res,esm,tax,wta, .keep_all= TRUE) -> no_dups
+  df_filt %>% distinct(soc,ag,gw,res,esm,tax,pws, .keep_all= TRUE) -> no_dups
   
   #filter data to just what's required for regression analysis (7 parameter assumptions,metric)
   #here the scarcity metric is shadow water price
-	df_regr <- subset(no_dups, select = c("soc","ag","ssp","tax","gw","esm","res","price_scenario"))
+	df_regr <- subset(no_dups, select = c("soc","ag","osf","tax","gw","esm","res","price_scenario"))
 		  
 	#regression using the randomforest package
 	rf_regr <- randomForest(
@@ -70,4 +70,5 @@ for (bs in basin_list) {
 #save sum_importances (variable importance scores for all basins) as csv
 #make sure the save location is somewhere on your local machine
 write.csv(sum_importances,
-          paste0("C:/Users/abirnb01/Documents/Research/NEXO-UA/LACwaterscarcity/data/CART_results/rf_wprice.csv"))
+          paste0("C:/Users/abirnb01/Documents/Research/NEXO-UA/LACwaterscarcity/data/CART_results/regr_wprice.csv"))
+
