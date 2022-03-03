@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<queries> 
+
+<aQuery>
+	<region name="Mexico" />
+            <supplyDemandQuery title="demand balances by crop commodity (5.1)">
+                <axis1 name="sector">sector</axis1>
+                <axis2 name="Year">demand-physical[@vintage]</axis2>
+                <xPath buildList="true" dataName="input" group="false" sumAll="false">*[@type='sector']//
+*[@type='input' and
+            (@name='Corn' or @name='FiberCrop'
+               or @name='MiscCrop' or @name='OilCrop' or @name='OtherGrain'
+               or @name='PalmFruit' or @name='Rice' or @name='Root_Tuber'
+               or @name='SugarCrop' or @name='Wheat' or @name='FodderGrass' or @name='FodderHerb'
+               or @name='Forest' or @name='Pasture')]/
+               demand-physical/node()</xPath>
+                <comments/>
+            </supplyDemandQuery>
+</aQuery>
+</queries>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+	<queries>
+      <aQuery>
+     
+ <supplyDemandQuery title="ag tech yield in a specified land region">
+            <axis1 name="technology">technology</axis1>
+            <axis2 name="Year">technology</axis2>
+            <xPath buildList="true" dataName="yield" group="false" sumAll="false">*[@type='sector' and (local-name()='AgSupplySector')]/
+            *[@type='subsector']/*[@type='technology' and contains(@name,'MexInt')]/yield/text()</xPath>
+            <comments/>
+         </supplyDemandQuery>
+
+      </aQuery>
+     </queries>
