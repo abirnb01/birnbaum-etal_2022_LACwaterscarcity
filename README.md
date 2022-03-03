@@ -4,7 +4,9 @@
 This repository contains the code used to generate the figures in the paper Drivers of Water Scarcity in Latin America and the Caribbean by Birnbaum et al. (2022) currently under revision.
 
 ## Reproduce my results
-To generate the GCAM databases used in this analysis, follow the instructions found here https://doi.org/10.5281/zenodo.4470017. Following these instructions will produce the GCAM databases for each scenario included in the analysis.
+To generate the GCAM databases used in this analysis, follow the instructions from Dolan et al. (2021) found here https://doi.org/10.5281/zenodo.4470017. Following these instructions will produce the GCAM databases for each scenario included in the analysis and their corresponding unconstrained water scenarios.
+
+To replicate the results from this analysis, generate the raw query results using the scripts found in the query_scripts directory (see query_request1.R for an example of how to run a query) and then run the R scripts and Jupyter notebooks found in main_figures and supplemental_figures directories. 
 
 ## Contents
 The structure of this repository is as follows:
@@ -41,8 +43,10 @@ The processing_queries directory contains the following:
 4. profit_merge.py: script used to combine profit in scenarios with profit in corresponding unconstrained water scenarios
 5. query_combine.py: script used to combine query results in scenarios with query results in corresponding unconstrained water scenarios (for water withdrawals and water price)
 6. query_import.py and query_import_unlimited.py: scripts used to process raw query results (combined individual scenario results into a single file)
-7. water_withdrawals_import.py and water_withdrawals_import_unlimited.py: scripts used to process raw water withdrawals data
-8. waterprice_cleanup.py: script used to process water price results 
+7. query_request1.R: example of script used to generate raw query results
+8. water_withdrawals_import.py and water_withdrawals_import_unlimited.py: scripts used to process raw water withdrawals data
+9. waterprice_cleanup.py: script used to process water price results 
+
 
 The query_xml directory contains the .xml files used to produce the raw data used in this analysis:
 1. ag_production.xml: ag production in a region for each crop
@@ -59,3 +63,6 @@ The query_xml directory contains the .xml files used to produce the raw data use
 12. water_withdrawals_basin.xml: water withdrawals (km^3) for all basins
 
 Any questions regarding the scripts included in this repository should be directed to abigail.birnbaum@tufts.edu
+
+## References
+Dolan, F. C. (2021). Evaluating the Economic Impact Of Water Scarcity In a Changing World. Zenodo. https://doi.org/10.5281/zenodo.4470017
