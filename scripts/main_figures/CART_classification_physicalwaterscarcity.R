@@ -12,16 +12,17 @@ library(dplyr)
 library(magrittr)
 
 #Set path (this should be changed for your local machine)
-setwd("C:/Users/abirnb01/Documents/Research/NEXO-UA/LACwaterscarcity/data/query_results/")
+#setwd("C:/Users/abirnb01/Documents/Research/NEXO-UA/LACwaterscarcity/data/query_results/")
+setwd("C:/Users/birnb/Documents/Tufts Research/NEXO-UA/LACwaterscarcity/data/query_results/")
 
 #Load CSV of metrics data
 #this has water price, crop profit, and physical water scarcity for the 40 LAC basins 
 #from 2015 - 2100 (5 year increments)
 metrics <- read.csv(file = 'scarcity_metrics.csv')
 
-yr<- 2100 #specify year of interest
-bs<-'Rio Grande River' #specify basin of interest
-
+yr<- 2075 #specify year of interest
+#bs<-'Rio Grande River' #specify basin of interest
+bs<-'North Chile-Pacific Coast'
 #filter to just the basin and year that we want
 metrics %>% filter(basin==bs & year==yr) -> df_filt
 
@@ -49,3 +50,4 @@ fit_class <- rpart(pws_binary ~ .,
 
 #plot classification tree
 rpart.plot(fit_class)
+

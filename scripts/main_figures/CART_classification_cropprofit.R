@@ -12,7 +12,8 @@ library(dplyr)
 library(magrittr)
 
 #Set path (this should be changed for your local machine)
-setwd("C:/Users/abirnb01/Documents/Research/NEXO-UA/LACwaterscarcity/data/query_results/")
+#setwd("C:/Users/abirnb01/Documents/Research/NEXO-UA/LACwaterscarcity/data/query_results/")
+setwd("C:/Users/birnb/Documents/Tufts Research/NEXO-UA/LACwaterscarcity/data/query_results/")
 
 #Load CSV of metrics data
 #this has water price, crop profit, and physical water scarcity for the 40 LAC basins 
@@ -20,7 +21,8 @@ setwd("C:/Users/abirnb01/Documents/Research/NEXO-UA/LACwaterscarcity/data/query_
 metrics <- read.csv(file = 'scarcity_metrics.csv')
 
 yr<- 2100 #specify year of interest
-bs<-'Rio Verde' #specify basin of interest
+bs<-'Mexico-Interior' #specify basin of interest
+#bs<-'East Brazil-South Atlantic Coast'
 
 #filter to just the basin and year that we want
 metrics %>% filter(basin==bs & year==yr) -> df_filt

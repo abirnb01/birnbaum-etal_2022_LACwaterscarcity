@@ -91,12 +91,6 @@ lac_basins_long = ['Central Patagonia Highlands', 'La Plata', 'La Puna Region',
 short_to_long = dict(zip(lac_basins_short,lac_basins_long))
 
 
-
-#LOAD DATA
-newpath = '/cluster/tufts/lamontagnelab/abirnb01/GCAM_queries/query_results/'
-pr_query = 'profit_rate_lac'
-lac_query = 'land_alloc_lac'
-
 #get all database names
 
 #THIS CODE HELPS US GET THE DB NAMES
