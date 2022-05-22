@@ -3,7 +3,7 @@
 
 #Running this code produces a classification tree for the specified basin (variable "bs" - reurn the code with the basin 
 #of your choice) 
-#The binary classification threshold is whether a scenario is extreme for all three scarcity metrics or not
+#The binary classification threshold is whether a scenario is severe for all three scarcity metrics or not
 
 #Load required libraries
 library(rpart) #CART
@@ -39,10 +39,10 @@ df_filt$tax=as.factor(df_filt$tax)
 #remove duplicates from dataset
 df_filt %>% distinct(soc,ag,gw,res,esm,tax,pws, .keep_all= TRUE) -> no_dups
 
-#create binary all_true to specify if all scarcity metrics are extreme or not
+#create binary all_true to specify if all scarcity metrics are severe or not
 no_dups$all_true <- (no_dups$profit_pchange <= -5) & (no_dups$pws > 0.4) & (no_dups$price_scenario >= 1.1*no_dups$weighted_price_scenario)
 
-sum(no_dups$all_true) #how many scenarios are extreme for all three metrics for this basin?
+sum(no_dups$all_true) #how many scenarios are severe for all three metrics for this basin?
 
 #get just the columns we need for CART (the seven parameters and the binary all_true column)
 df_class <- subset(no_dups, select = c("soc","ag","osf","tax","gw","esm","res","all_true"))

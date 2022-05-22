@@ -3,7 +3,7 @@
 
 #Running this code produces a classification tree for the specified basin (variable "bs" - reurn the code with the basin 
 #of your choice) 
-#The binary classification threshold is whether a scenario is extreme for the physical water scarcity metric
+#The binary classification threshold is whether a scenario is severe for the physical water scarcity metric
 
 #Load required libraries
 library(rpart) #CART
