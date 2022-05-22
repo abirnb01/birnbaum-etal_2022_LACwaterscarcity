@@ -1,5 +1,6 @@
 #Abigail Birnbaum
-#Calcules global average water price (weighted by water withdrawals in basin to global water withdrawals)
+#Calculates global average water price (weighted by water withdrawals in basin to global water withdrawals)
+#requests for raw data mentioned in this script should be made to abigail.birnbaum@tufts.edu
 
 #Import statements
 import pandas as pd #for dataframe
@@ -15,7 +16,7 @@ from functools import reduce
 
 
 #set path to store result (change for your local machine)
-newpath = '/cluster/tufts/lamontagnelab/abirnb01/GCAM_queries/query_results/final_results/pickle_data/'
+newpath = '/cluster/tufts/lamontagnelab/abirnb01/Paper1/GCAM_queries/query_results/final_results/pickle_data/'
 
 withdrawals = pd.read_pickle(newpath+'water_withdrawals_basin_flannery_combined') #load water withdrawals raw data
 
@@ -64,3 +65,10 @@ ww_price_sum = ww_price_sum_scenario.merge(ww_price_sum_unlimited,on=['year','gw
 
 #save as pickle
 ww_price_sum.to_pickle(newpath+'glob_wprice')
+
+#also save all basin's water price in 2100
+ww_price2 = ww_price.filter(['Units_price','basin','year','tax','ssp','ag','soc','gw','esm','res',
+                           'price_scenario'])
+ww_price2 = ww_price2[ww_price2.year==2100]
+ww_price2.to_pickle('/cluster/tufts/lamontagnelab/abirnb01/Paper1/LACwaterscarcity/data/query_results/wprice_allbasins')
+

@@ -1,9 +1,11 @@
+#Abigail Birnbaum
 #Rename water price basin names appropriately
+#raw data requests to abigail.birnbaum@tufts.edu
 
 #import statements
 import pandas as pd
 
-newpath = '/cluster/tufts/lamontagnelab/abirnb01/GCAM_queries/query_results/final_results/pickle_data/' #path - set for your local machine
+newpath = '/cluster/tufts/lamontagnelab/abirnb01/Paper1/GCAM_queries/query_results/final_results/pickle_data/' #path - set for your local machine
 
 query1 = 'water_withdrawals_basin_flannery' #load in water withdrawals data
 ww_df = pd.read_pickle(newpath+query1+'_combined')
@@ -25,4 +27,4 @@ markets_to_basins = dict(zip(markets,basins))
 price_df.basin = price_df.basin.map(markets_to_basins)
 
 #save price result as csv with new names
-price_df.to_pickle('/cluster/tufts/lamontagnelab/abirnb01/GCAM_queries/query_results/final_results/pickle_data/water_prices_combined_renamed')
+price_df.to_pickle('/cluster/tufts/lamontagnelab/abirnb01/Paper1/GCAM_queries/query_results/final_results/pickle_data/water_prices_combined_renamed')

@@ -1,5 +1,6 @@
 #Abigail Birnbaum
 #Calculate profit for each basin using raw land allocation and profit rate query results ($1975)
+#requests for raw data mentioned in this script should be sent to abigail.birnbaum@tufts.edu
 
 #Import statements
 import pandas as pd #for dataframe
@@ -108,14 +109,14 @@ lac_basins_long = ['Central Patagonia Highlands', 'La Plata', 'La Puna Region',
 short_to_long = dict(zip(lac_basins_short,lac_basins_long))
 
 #LOAD DATA
-newpath = '/cluster/tufts/lamontagnelab/abirnb01/GCAM_queries/query_results/'
+newpath = '/cluster/tufts/lamontagnelab/abirnb01/Paper1/GCAM_queries/query_results/'
 pr_query = 'profit_rate_lac'
 lac_query = 'land_alloc_lac'
 
 #get all database names
 
 #THIS CODE HELPS US GET THE DB NAMES
-lac_path = '/cluster/tufts/lamontagnelab/abirnb01/GCAM_queries/query_results/'+lac_query+'/'
+lac_path = '/cluster/tufts/lamontagnelab/abirnb01/Paper1/GCAM_queries/query_results/'+lac_query+'/'
 os.chdir(lac_path)
 os.getcwd()
 extension = 'csv'
@@ -125,8 +126,8 @@ dbnames = [] #empty list for all the db names
 for fname in all_filenames2:
     dbnames.append(fname.replace("_land_alloc_lac.csv",""))
     
-lac_path = '/cluster/tufts/lamontagnelab/abirnb01/GCAM_queries/query_results/'+lac_query+'/'
-pr_path = '/cluster/tufts/lamontagnelab/abirnb01/GCAM_queries/query_results/' +pr_query+'/'
+lac_path = '/cluster/tufts/lamontagnelab/abirnb01/Paper1/GCAM_queries/query_results/'+lac_query+'/'
+pr_path = '/cluster/tufts/lamontagnelab/abirnb01/Paper1/GCAM_queries/query_results/' +pr_query+'/'
 
 ###################MAIN#############################
 
@@ -163,7 +164,7 @@ for db in dbnames[:]: #for each database in dbnames
     df_filt = scen_columns(df_filt)
         
     #save profit data (by crop) - may need this later
-    savepath = '/cluster/tufts/lamontagnelab/abirnb01/GCAM_queries/query_results/final_results/crop_profit'
+    savepath = '/cluster/tufts/lamontagnelab/abirnb01/Paper1/GCAM_queries/query_results/final_results/crop_profit'
     isdir = os.path.isdir(savepath) 
     if not isdir:
         os.mkdir(savepath)
@@ -173,7 +174,7 @@ for db in dbnames[:]: #for each database in dbnames
     #now sum up across crops to get basin net profit
     
     #save profit sum data
-    savepath = '/cluster/tufts/lamontagnelab/abirnb01/GCAM_queries/query_results/final_results/crop_profit_sum'
+    savepath = '/cluster/tufts/lamontagnelab/abirnb01/Paper1/GCAM_queries/query_results/final_results/crop_profit_sum'
     isdir = os.path.isdir(savepath) 
     if not isdir:
         os.mkdir(savepath)
@@ -189,7 +190,7 @@ for db in dbnames[:]: #for each database in dbnames
     
 #Now sum up crop profit sums across databases to get single pickle file that contains it for all of the databases
 query = 'crop_profit_sum'
-newpath = '/cluster/tufts/lamontagnelab/abirnb01/GCAM_queries/query_results/final_results/'
+newpath = '/cluster/tufts/lamontagnelab/abirnb01/Paper1/GCAM_queries/query_results/final_results/'
 os.chdir(newpath+query)
 os.getcwd()
 

@@ -1,5 +1,6 @@
 #Abigail Birnbaum
 #script to combine water withdrawals (for unconstrained scenarios) into single pickle
+#requests for raw data to abigail.birnbaum@tufts.edu
 
 query = 'water_withdrawals_basin_flannery'
 
@@ -61,7 +62,7 @@ def scen_columns(df):
 #####MAIN###
 ##
 ###path of query_results for specific query
-path = '/cluster/tufts/lamontagnelab/abirnb01/GCAM_queries/query_results/unlimited_water/'+query+'/'
+path = '/cluster/tufts/lamontagnelab/abirnb01/Paper1/GCAM_queries/query_results/unlimited_water/'+query+'/'
 os.chdir(path)
 os.getcwd()
 extension = 'csv'
@@ -69,7 +70,7 @@ extension = 'csv'
 all_filenames = [i for i in glob.glob('*.{}'.format(extension))]
 ##
 
-newpath = '/cluster/tufts/lamontagnelab/abirnb01/GCAM_queries/query_results/final_results/'
+newpath = '/cluster/tufts/lamontagnelab/abirnb01/Paper1/GCAM_queries/query_results/final_results/'
 ##
 #make new directory for new csv, if needed
 isdir = os.path.isdir(newpath+query+'_unlimited') 
@@ -90,7 +91,7 @@ for f in range(len(all_filenames[:])):
     query_df.to_csv(newpath+query+'_unlimited/'+query+str(f)+'.csv')
 
 #get all of the csv (new ones) and combine
-newpath = '/cluster/tufts/lamontagnelab/abirnb01/GCAM_queries/query_results/final_results/'+query+'_unlimited'
+newpath = '/cluster/tufts/lamontagnelab/abirnb01/Paper1/GCAM_queries/query_results/final_results/'+query+'_unlimited'
 os.chdir(newpath)
 os.getcwd()
 
@@ -99,6 +100,6 @@ all_filenames = [i for i in glob.glob('*.{}'.format(extension))]
 combined_csv = pd.concat([pd.read_csv(f) for f in all_filenames[:]])
 
 #combined_csv = combined_csv.drop(['Unnamed: 0'],axis=1)
-combined_csv.to_pickle('/cluster/tufts/lamontagnelab/abirnb01/GCAM_queries/query_results/final_results/pickle_data/'+query+'_unlimited')
+combined_csv.to_pickle('/cluster/tufts/lamontagnelab/abirnb01/Paper1/GCAM_queries/query_results/final_results/pickle_data/'+query+'_unlimited')
 
 

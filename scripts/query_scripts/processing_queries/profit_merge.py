@@ -1,5 +1,6 @@
 #Abigail Birnbaum
 #script to combine crop profit in scenarios and crop profit in corresponding unconstrained water scenarios
+#requests for raw data to abigail.birnbaum@tufts.edu
 
 #Import statements
 import pandas as pd #for dataframe
@@ -11,9 +12,9 @@ import os
 import glob
 
 query = 'crop_profit_sum_unlimited'
-unlim_profit = pd.read_pickle('/cluster/tufts/lamontagnelab/abirnb01/GCAM_queries/query_results/final_results/pickle_data/'+query)
+unlim_profit = pd.read_pickle('/cluster/tufts/lamontagnelab/abirnb01/Paper1/GCAM_queries/query_results/final_results/pickle_data/'+query)
 query2 = 'crop_profit_sum'
-scen_profit = pd.read_pickle('/cluster/tufts/lamontagnelab/abirnb01/GCAM_queries/query_results/final_results/pickle_data/'+query2)
+scen_profit = pd.read_pickle('/cluster/tufts/lamontagnelab/abirnb01/Paper1/GCAM_queries/query_results/final_results/pickle_data/'+query2)
 
 #merge the two datasets
 profit_merge = scen_profit.merge(unlim_profit,on=['year','basin','tax','ssp','ag','soc','Units_profit'],
@@ -27,4 +28,4 @@ profit_merge = profit_merge.rename(columns={'value_profit_scenario':'profit_scen
 profit_merge['profit_pchange'] = 100*((profit_merge['profit_scenario'] - profit_merge['profit_unlimited'])/profit_merge['profit_unlimited'])
 
 #save to pickle
-profit_merge.to_pickle('/cluster/tufts/lamontagnelab/abirnb01/GCAM_queries/query_results/final_results/pickle_data/profit_lac')
+profit_merge.to_pickle('/cluster/tufts/lamontagnelab/abirnb01/Paper1/GCAM_queries/query_results/final_results/pickle_data/profit_lac')

@@ -1,6 +1,7 @@
 #Abigail Birnbaum
 #This script combines all three scarcity metrics (physical water scarcity,
 #water price, and crop profit) into a single result file (saved as a pickle)
+#requests for raw data mentioned in this script should be made to abigail.birnbaum@tufts.edu
 
 #Import statements
 import pandas as pd
@@ -13,7 +14,7 @@ from functools import reduce
 ##MAIN##
 
 #Path to where data is located (change this for your local machine)
-newpath = '/cluster/tufts/lamontagnelab/abirnb01/GCAM_queries/query_results/final_results/pickle_data/'
+newpath = '/cluster/tufts/lamontagnelab/abirnb01/Paper1/GCAM_queries/query_results/final_results/pickle_data/'
 
 #load water price data
 wprice = pd.read_pickle(newpath+'water_prices_combined_lac')

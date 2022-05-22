@@ -1,6 +1,7 @@
 #Abigail Birnbaum
 #script to combine query results from scenarios and unconstrained scenarios into single result
 #for water withdrawals and water price
+#requests for raw data to abigail.birnbaum@tufts.edu
 
 #import statements
 import pandas as pd
@@ -20,7 +21,7 @@ import glob
 #comb_df.to_pickle(newpath+query1+'_combined')
 
 
-newpath = '/cluster/tufts/lamontagnelab/abirnb01/GCAM_queries/query_results/final_results/pickle_data/'
+newpath = '/cluster/tufts/lamontagnelab/abirnb01/Paper1/GCAM_queries/query_results/final_results/pickle_data/'
 query1 = 'water_prices'
 df1 = pd.read_pickle(newpath+query1)
 df2 = pd.read_pickle(newpath+query1+'_unlimited')
