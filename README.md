@@ -16,17 +16,17 @@ Within the scripts directory are the following sub-directories:
 1. main_figures: contains R scripts and Jupyter notebook used to generate the figures found in the main body of the paper
 2. supplemental_figures: contains Jupyter notebook used to generate the figures found in the SI of the paper
 3. query_scripts: contains scripts used to process raw data
-4. LACwaterscarcity_env: yml file containing necessary dependencies to run the scripts in main_figures and supplemental_figures
+4. LACwaterscarcity_env: yml file containing necessary dependencies to run the scripts in main_figures_script.ipynb and supplemental_figures_script.ipynb
 
 The main_figures directory contains the following scripts:
-1. main_figures_script.ipynb: Jupyter notebook used to generate Figures 1, 2, 3, and 5 in the paper. The Jupyter notebook can also be accessed at: 
+1. main_figures_script.ipynb: Jupyter notebook used to generate Figures 1, 2, 3, and 5 in the paper.
 2. CART_regression_physicalwaterscarcity.R: R script used to generate data for Figure 2 (regression trees with bagging on physical water scarcity metric)
 3. CART_regression_waterprice.R: R script used to generate data for Figure 2 (regression trees with bagging on water price metric)
-4. CART_regression_cropprofit.R: R script used to generate data for Figure 2 (regression trees with bagging on crop profit metric)
-5. CART_classification_physicalwaterscarcity.R: R script used to generate classification trees in Figure 4 (physical water scarcity extremes)
-6. CART_classification_waterprice.R: R script used to generate classification trees in Figure 6 (water price extremes)
-7. CART_classification_cropprofit.R: R script used to generate classification trees in Figure 7 (crop profit extremes)
-8. CART_classification_allmetricsextreme.R: R script used to generate classification trees in Figure 8 (extreme for all metrics)
+4. CART_regression_cropprofit.R: R script used to generate data for Figure 2 (regression trees with bagging on crop profit change metric)
+5. CART_classification_physicalwaterscarcity.R: R script used to generate classification trees in Figure 4 (severe physical water scarcity outcomes)
+6. CART_classification_waterprice.R: R script used to generate classification trees in Figure 6 (severe water price outcomes)
+7. CART_classification_cropprofit.R: R script used to generate classification trees in Figure 7 (severe crop profit change outcomes)
+8. CART_classification_allmetrics_severe.R: R script used to generate classification trees in Figure 8 (severe outcomes for all three metrics)
 
 The supplemental_figures directory contains the Jupyter notebook supplemental_figures.ipynb used to generate the figures in the supplement
 
@@ -35,8 +35,8 @@ The query_scripts directory contains the following sub-directories:
 2. query_xml: xml files needed to produce raw data from GCAM databases
 
 The processing_queries directory contains the following:
-1. combine_scarcity_metrics.py: script that combines the physical water scarcity, water price, and crop profit scarcity metrics for all scenarios into a single file
-2. get_glob_wprice.py: script to generate the global average water price (GAWP) for each scenario, weighted by basin water withdrawals/global water withdrawals
+1. combine_scarcity_metrics.py: script that combines the physical water scarcity, water price, and crop profit change scarcity metrics for all scenarios into a single file
+2. get_glob_wprice.py: script to generate the global weighted average water price for each scenario, weighted by basin water withdrawals/global water withdrawals
 3. profit_import.py and profit_import_unlimited.py: scripts to calculate profit in scenarios and unconstrained water scenarios using profit rate and land allocation query results
 4. profit_merge.py: script used to combine profit in scenarios with profit in corresponding unconstrained water scenarios
 5. query_combine.py: script used to combine query results in scenarios with query results in corresponding unconstrained water scenarios (for water withdrawals and water price)
