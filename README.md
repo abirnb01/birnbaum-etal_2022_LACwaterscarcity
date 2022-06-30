@@ -1,4 +1,4 @@
-# Drivers of Water Scarcity in Latin America and the Caribbean (Birnbaum et al. (2022), in revision)
+Drivers of Future Physical Water Scarcity and its Economic Impacts in Latin America and the Caribbean (Birnbaum et al. (2022), in revision)
 This repository contains the code used to generate the figures in the paper Drivers of Water Scarcity in Latin America and the Caribbean by Birnbaum et al. (2022) currently under revision.
 
 ## Reproduce my results
