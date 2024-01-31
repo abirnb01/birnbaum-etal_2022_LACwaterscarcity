@@ -1,6 +1,6 @@
 # Drivers of Future Physical Water Scarcity and its Economic Impacts in Latin America and the Caribbean (Birnbaum et al. (2022), _Earth's Future_)
 
-This repository contains the code used to generate the figures in the paper Drivers of Future Physical Water Scarcity and its Economic Impacts in Latin America and the Caribbean by Birnbaum et al. (2022) in _Earth's Future_.
+This repository contains the code used to generate the figures in the paper Drivers of Future Physical Water Scarcity and its Economic Impacts in Latin America and the Caribbean by Birnbaum et al. (2022) in _Earth's Future_: https://doi.org/10.1029/2022EF002764
 
 ## Reproduce my results
 To generate the GCAM databases used in this analysis, follow the instructions from Dolan et al. (2021) found here https://doi.org/10.5281/zenodo.4470017. Following these instructions will produce the GCAM databases for each scenario included in the analysis and their corresponding unconstrained water scenarios.
